@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": ["nestjs", "plugin:sonarjs/recommended", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "sonarjs/cognitive-complexity": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+  },
+  "ignorePatterns": ["dist/**", "node_modules/**", "coverage/**"]
+}
