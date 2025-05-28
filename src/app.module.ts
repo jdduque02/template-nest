@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { validateEnv } from './config/env';
-import { UserControllerController } from './controllers/user/user.controller.controller';
-import { UserControllerService } from './services/user/user.controller.service';
 
 @Module({
   imports: [
@@ -12,7 +10,7 @@ import { UserControllerService } from './services/user/user.controller.service';
       envFilePath: '.env',
     }),
   ],
-  controllers: [UserControllerController],
-  providers: [UserControllerService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

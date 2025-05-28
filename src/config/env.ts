@@ -45,7 +45,16 @@ class EnvironmentVariables {
   @IsString()
   RATE_LIMIT_MAX = 100;
 }
-
+/**
+ * Valida las variables de entorno usando class-validator y class-transformer.
+ *
+ * - Convierte el objeto de configuración recibido en una instancia de EnvironmentVariables,
+ *   permitiendo la conversión implícita de tipos.
+ * - Valida la instancia creada, asegurando que todas las propiedades requeridas estén presentes
+ *   y cumplan con las reglas definidas en la clase.
+ * - Si hay errores de validación, lanza una excepción con los detalles.
+ * - Si todo es válido, retorna la configuración validada (validatedConfig).
+ */
 export function validateEnv(config: Record<string, unknown>) {
   const validatedConfig = plainToInstance(EnvironmentVariables, config, {
     enableImplicitConversion: true,

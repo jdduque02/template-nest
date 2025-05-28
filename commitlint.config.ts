@@ -2,6 +2,12 @@ import type { UserConfig } from '@commitlint/types';
 
 export const config: UserConfig = {
   extends: ['@commitlint/config-conventional'],
+  parserPreset: {
+    parserOpts: {
+      headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
+      headerCorrespondence: ['type', 'scope', 'subject'],
+    },
+  },
   rules: {
     'type-enum': [
       2,
@@ -20,7 +26,8 @@ export const config: UserConfig = {
         'build',
       ],
     ],
-    'scope-case': [2, 'always', 'kebab-case'],
-    'subject-case': [2, 'always', 'lower-case'],
+    'header-max-length': [2, 'always', 100],
+    'body-leading-blank': [2, 'always'],
+    'footer-leading-blank': [2, 'always'],
   },
 };

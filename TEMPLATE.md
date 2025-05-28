@@ -253,7 +253,16 @@ src/
 ├── interfaces/   # Tipos y interfaces TS
 ├── middlewares/  # Middlewares globales
 ├── interceptors/ # Interceptores HTTP
-└── helpers/      # Utilidades comunes
+└──  common/
+    ├── decorators/      # Decoradores personalizados
+    ├── exceptions/      # Excepciones personalizadas
+    ├── filters/         # Filtros de excepción
+    ├── guards/          # Guards de autenticación/autorización
+    ├── helpers/         # Utilidades (como tu ResponseHelper)
+    ├── interceptors/    # Interceptores globales
+    ├── interfaces/      # Interfaces compartidas
+    ├── pipes/           # Pipes personalizados
+    └── utils/           # Funciones utilitarias genéricas
 ```
 
 ```bash
