@@ -131,6 +131,17 @@ export const config: UserConfig = {
   },
 };
 ```
+### Tipos permitidos (según la configuración):
+| Tipo       | Descripción                              |
+|------------|------------------------------------------|
+| feat       | Nueva funcionalidad                     |
+| fix        | Corrección de errores                   |
+| docs       | Cambios en documentación                |
+| style      | Formato (espacios, comas, etc.)         |
+| refactor   | Mejoras de código sin cambiar funcionalidad |
+| test       | Adiciones de pruebas                    |
+| chore      | Tareas de mantenimiento                 |
+| revert     | Revertir un commit anterior             |
 
 Agregar hook:
 
@@ -158,7 +169,7 @@ sonar.sourceEncoding=UTF-8
 Ejecutar análisis:
 
 ```bash
-sonar-scanner
+npm install --save-dev sonarqube-scanner
 ```
 
 ---
@@ -225,11 +236,11 @@ CMD ["node", "dist/main.js"]
 
 `.dockerignore`:
 
-``` markdown
+```markdown
 node_modules
 dist
 .env
-*.md
+\*.md
 ```
 
 **Uso**:
@@ -293,7 +304,6 @@ const config = new DocumentBuilder()
 
 const document = SwaggerModule.createDocument(app, config);
 SwaggerModule.setup('api', app, document);
-
 ```
 
 Acceder en: `http://localhost:3000/api`
@@ -302,27 +312,27 @@ Acceder en: `http://localhost:3000/api`
 
 Utiliza los siguientes comandos para generar componentes en tu proyecto:
 
-| Comando           | Alias  | Descripción                                  |
-|-------------------|--------|----------------------------------------------|
-| `application`     | `app`  | Generar una nueva aplicación en un workspace |
-| `class`           | `cl`   | Generar una clase                            |
-| `configuration`   | `config`| Crear archivo de configuración CLI           |
-| `controller`      | `co`   | Generar controlador                          |
-| `decorator`       | `d`    | Crear decorador personalizado                |
-| `filter`          | `f`    | Generar filtro                               |
-| `gateway`         | `ga`   | Crear gateway (WebSockets)                   |
-| `guard`           | `gu`   | Generar guardia de autenticación             |
-| `interceptor`     | `itc`  | Crear interceptor                            |
-| `interface`       | `itf`  | Generar interfaz TypeScript                  |
-| `library`         | `lib`  | Crear librería en monorepo                   |
-| `middleware`      | `mi`   | Generar middleware                           |
-| `module`          | `mo`   | Crear módulo                                 |
-| `pipe`            | `pi`   | Generar pipe de validación                   |
-| `provider`        | `pr`   | Crear proveedor (service, repository, etc)   |
-| `resolver`        | `r`    | Generar resolver de GraphQL                  |
-| `resource`        | `res`  | Crear recurso CRUD completo                  |
-| `service`         | `s`    | Generar servicio                             |
-| `sub-app`         | `app`  | Crear sub-aplicación en monorepo             |
+| Comando         | Alias    | Descripción                                  |
+| --------------- | -------- | -------------------------------------------- |
+| `application`   | `app`    | Generar una nueva aplicación en un workspace |
+| `class`         | `cl`     | Generar una clase                            |
+| `configuration` | `config` | Crear archivo de configuración CLI           |
+| `controller`    | `co`     | Generar controlador                          |
+| `decorator`     | `d`      | Crear decorador personalizado                |
+| `filter`        | `f`      | Generar filtro                               |
+| `gateway`       | `ga`     | Crear gateway (WebSockets)                   |
+| `guard`         | `gu`     | Generar guardia de autenticación             |
+| `interceptor`   | `itc`    | Crear interceptor                            |
+| `interface`     | `itf`    | Generar interfaz TypeScript                  |
+| `library`       | `lib`    | Crear librería en monorepo                   |
+| `middleware`    | `mi`     | Generar middleware                           |
+| `module`        | `mo`     | Crear módulo                                 |
+| `pipe`          | `pi`     | Generar pipe de validación                   |
+| `provider`      | `pr`     | Crear proveedor (service, repository, etc)   |
+| `resolver`      | `r`      | Generar resolver de GraphQL                  |
+| `resource`      | `res`    | Crear recurso CRUD completo                  |
+| `service`       | `s`      | Generar servicio                             |
+| `sub-app`       | `app`    | Crear sub-aplicación en monorepo             |
 
 **Ejemplos de uso:**
 
@@ -354,25 +364,25 @@ Aquí está la tabla con las variables de entorno recomendadas para la aplicaci�
 
 ## 🔧 Variables de Entorno
 
-| Variable              | Descripción                              | Tipo     | Requerido | Valor por Defecto |
-|-----------------------|------------------------------------------|----------|-----------|-------------------|
-| `JOB_NAME`            | Nombre identificador del servicio        | string   | ✅        | -                 |
-| `APP_PORT`            | Puerto de ejecución de la aplicación     | number   | ✅        | 3000              |
-| `ENV`                 | Entorno de ejecución (DEV/QA/PROD)       | string   | ✅        | DEV               |
-| `HASH_KEY_USER`       | Clave secreta para hashing de usuarios   | string   |         | -                 |
-| `HASH_KEY_JWT`        | Clave secreta para firmar JWT            | string   | ✅        | -                 |
-| `VERSION`             | Versión actual de la aplicación          | string   | ⚠️       | 1.0.0             |
-| `SALT`                | Salt para procesos de encriptación       | number   | ✅        | 10                |
-| `APP_DEV`             | Modo desarrollo (true/false)             | boolean  | ⚠️       | false             |
-| `DATABASE_HOST`       | Host de la base de datos                 | string   | ✅        | -                 |
-| `DATABASE_PORT`       | Puerto de la base de datos               | number   | ✅        | -                 |
-| `DATABASE_USERNAME`   | Usuario de la base de datos              | string   | ✅        | -                 |
-| `DATABASE_PASSWORD`   | Contraseña de la base de datos           | string   | ✅        | -                 |
-| `DATABASE_NAME`       | Nombre de la base de datos               | string   | ✅        | -                 |
-| `RATE_LIMIT_TTL`      | Ventana de tiempo para rate limiting (s) | number   | ⚠️       | 60                |
-| `RATE_LIMIT_MAX`      | Máximo de peticiones por ventana        | number   | ⚠️       | 100               |
+| Variable            | Descripción                              | Tipo    | Requerido | Valor por Defecto |
+| ------------------- | ---------------------------------------- | ------- | --------- | ----------------- |
+| `JOB_NAME`          | Nombre identificador del servicio        | string  | ✅        | -                 |
+| `APP_PORT`          | Puerto de ejecución de la aplicación     | number  | ✅        | 3000              |
+| `ENV`               | Entorno de ejecución (DEV/QA/PROD)       | string  | ✅        | DEV               |
+| `HASH_KEY_USER`     | Clave secreta para hashing de usuarios   | string  |           | -                 |
+| `HASH_KEY_JWT`      | Clave secreta para firmar JWT            | string  | ✅        | -                 |
+| `VERSION`           | Versión actual de la aplicación          | string  | ⚠️        | 1.0.0             |
+| `SALT`              | Salt para procesos de encriptación       | number  | ✅        | 10                |
+| `APP_DEV`           | Modo desarrollo (true/false)             | boolean | ⚠️        | false             |
+| `DATABASE_HOST`     | Host de la base de datos                 | string  | ✅        | -                 |
+| `DATABASE_PORT`     | Puerto de la base de datos               | number  | ✅        | -                 |
+| `DATABASE_USERNAME` | Usuario de la base de datos              | string  | ✅        | -                 |
+| `DATABASE_PASSWORD` | Contraseña de la base de datos           | string  | ✅        | -                 |
+| `DATABASE_NAME`     | Nombre de la base de datos               | string  | ✅        | -                 |
+| `RATE_LIMIT_TTL`    | Ventana de tiempo para rate limiting (s) | number  | ⚠️        | 60                |
+| `RATE_LIMIT_MAX`    | Máximo de peticiones por ventana         | number  | ⚠️        | 100               |
 
-**Leyenda:**  
+**Leyenda:**
 ✅ = Requerido - ⚠️ = Opcional
 
 ## 🛡️ Consideraciones de Seguridad
@@ -411,11 +421,8 @@ class EnvironmentVariables {
   @IsString()
   JOB_NAME: string;
 
-  @IsNumber()
-  APP_PORT: number;
-
   @IsString()
-  ENV: string;
+  APP_PORT: string;
 
   @IsString()
   HASH_KEY_USER: string;
@@ -424,25 +431,23 @@ class EnvironmentVariables {
   HASH_KEY_JWT: string;
 
   @IsString()
-  @IsOptional()
-  VERSION?: string;
+  VERSION: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   SALT = 10;
 
-  @IsBoolean()
-  @IsOptional()
-  APP_DEV = false;
+  @IsString()
+  APP_DEV = 'false';
 
   @IsString()
   DATABASE_HOST: string;
 
-  @IsNumber()
-  DATABASE_PORT: number;
+  @IsString()
+  DATABASE_PORT: string;
 
   @IsString()
-  DATABASE_USERNAME: string;
+  DATABASE_USER: string;
 
   @IsString()
   DATABASE_PASSWORD: string;
@@ -450,20 +455,21 @@ class EnvironmentVariables {
   @IsString()
   DATABASE_NAME: string;
 
-  @IsNumber()
-  @IsOptional()
+  @IsString()
   RATE_LIMIT_TTL = 60;
 
-  @IsNumber()
-  @IsOptional()
+  @IsString()
   RATE_LIMIT_MAX = 100;
+
+  @IsString()
+  LOG_SERVICE_URL: string;
 }
 
 export function validateEnv(config: Record<string, unknown>) {
   const validatedConfig = plainToInstance(EnvironmentVariables, config, {
     enableImplicitConversion: true,
   });
-  
+
   const errors = validateSync(validatedConfig, {
     skipMissingProperties: false,
   });
@@ -549,6 +555,9 @@ DATABASE_NAME=main_db
 # Rate limiting
 RATE_LIMIT_TTL=60
 RATE_LIMIT_MAX=100
+
+# logs
+LOG_SERVICE_URL=localhost:3000/
 ```
 
 ## 🖌 Editar eslint.config.mjs para windows

@@ -31,7 +31,7 @@ class EnvironmentVariables {
   DATABASE_PORT: string;
 
   @IsString()
-  DATABASE_USERNAME: string;
+  DATABASE_USER: string;
 
   @IsString()
   DATABASE_PASSWORD: string;
@@ -44,6 +44,9 @@ class EnvironmentVariables {
 
   @IsString()
   RATE_LIMIT_MAX = 100;
+
+  @IsString()
+  LOG_SERVICE_URL: string;
 }
 /**
  * Valida las variables de entorno usando class-validator y class-transformer.

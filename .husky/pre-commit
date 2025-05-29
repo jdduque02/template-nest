@@ -1,4 +1,16 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-#npm test
+npx --no -- commitlint --edit "$1"
+# Limpiar espacios al final SOLO en archivos que existen
+echo "🧹 Limpiando espacios al final de las líneas..."
+git diff --cached --name-only --diff-filter=d | xargs -r sed -i 's/[[:space:]]*$//'
+
+# Resto del hook sin cambios...
+echo "🔍 Ejecutando lint-staged..."
+npx lint-staged
+echo "🧪 Ejecutando tests..."
+npm test
+echo "📊 Ejecutando SonarQube Scanner..."
+# npm run sonar
+echo "✅ Pre-commit hooks completados exitosamente!"

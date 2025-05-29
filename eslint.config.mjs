@@ -31,7 +31,10 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-argument': 'warn',
       'linebreak-style': ['off', 'windows'],
       'linebreak-style': 'off',
-      'prettier/prettier': ['error', { 'endOfLine': 'auto' }]
+      'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+      'eol-last': ['error', 'always'],
     },
   },
 );
